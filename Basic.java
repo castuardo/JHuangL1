@@ -29,7 +29,7 @@ public class Basic{
 			sc.close();
 		}
 	}*/
-	public static void main(String... args){
+	/*public static void main(String... args){
 		if(args.length != 1){
 			System.out.println("I need one arg!");
 			System.exit(0);
@@ -45,6 +45,38 @@ public class Basic{
 				}
 				brdr.close();
 				rdr.close();
+			}
+			catch(IOException exc){
+				System.out.println("An error ocurred: " + exc.getMessage());
+			}
+		}
+	}*/
+	public static void main(String... args){
+		if(args.length != 1){
+			System.out.println("I need one arg!");
+			System.exit(0);
+		}
+		else{
+			try{
+				File file = new File(args[0]);
+				FileReader rdr = new FileReader(file);
+				BufferedReader brdr = new BufferedReader(rdr);
+				String line = null;
+				int sum = 0;
+				while((line = brdr.readLine()) != null){
+					System.out.println("A number: " + line);
+					try{
+						int num = Integer.parseInt(line);
+						sum = sum + num;
+					}
+					catch(Exception exc){
+						System.out.println("Error transforming to number: " + line);
+						System.exit(1);
+					}
+				}
+				brdr.close();
+				rdr.close();
+				System.out.println("The sum is " + sum);
 			}
 			catch(IOException exc){
 				System.out.println("An error ocurred: " + exc.getMessage());
