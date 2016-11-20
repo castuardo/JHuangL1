@@ -62,17 +62,21 @@ public class Basic{
 				FileReader rdr = new FileReader(file);
 				BufferedReader brdr = new BufferedReader(rdr);
 				String line = null;
-				int sum = 0;
+				long sum = 0;
+				long num = 0;
 				while((line = brdr.readLine()) != null){
-					System.out.println("A number: " + line);
 					try{
-						int num = Integer.parseInt(line);
-						sum = sum + num;
+						num = Long.parseLong(line);
+						
 					}
 					catch(Exception exc){
 						System.out.println("Error transforming to number: " + line);
 						System.exit(1);
 					}
+					System.out.println("A number: " + line);
+					
+					
+					sum = sum + num;
 				}
 				brdr.close();
 				rdr.close();
